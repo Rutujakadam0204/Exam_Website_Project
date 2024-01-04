@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% block container %}
+{% if request.user.is_superuser %}
+<div class="container-fluid">
+  <button class="btn btn-danger m-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop" aria-controls="staticBackdrop">
+    See Question Form
+  </button>
+  <br>
+  <table class="table table-striped-columns">
+    <thead>
+      <tr>
+        <th scope="col">Sr. No.</th>
+        <th scope="col">Experiment No.</th>
+        <th scope="col">Question</th>
+        <th scope="col">Image/Video</th>
+        <th scope="col">Answer</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for i in questions %}
+        <tr>
+          <th scope="row">{{forloop.counter}}</th>
+          <td>{{i.experiment}}</td>
+          <td>{{i.text}}</td>
+          <td>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#image-modal-{{i.id}}">Image/video</button>
+          </td>
+          <td>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#answer-modal-{{i.id}}">Answer</button>
+          </td>
+        </tr>
+        <div class="modal fade" id="image-modal-{{i.id}}" tabindex="-1" aria-labelledby="exampleModalLabel-{{i.id}}" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <h1 class="modal-title fs-5" id="exampleModalLabel-{{i.id}}">Experiment No. {{i.experiment}}</h1>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+
+                  <div class="modal-body">
+                    <div class="container-fluid">
+                      {% if i.question_display_type == 'image' and i.quest_image %}
+                        <img src="{{i.quest_image.url}}" alt="{{i.text}}" width="350" height="200">
+                      {% elif i.question_display_type == 'video' and i.quest_image  %}
+                        <video width="320" height="240" controls>
+                          <source src="{{i.quest_image.url}}" type="video/mp4">
+                        </video>
+                      {% endif %}
+                    </div>
+                  </div>
+              </div>
+          </div>
+        </div>
+
+        <div class="modal fade" id="answer-modal-{{i.id}}" tabindex="-1" aria-labelledby="answerModalLabel-{{i.id}}" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <h1 class="modal-title fs-5" id="answerModalLabel-{{i.id}}">Experiment No. {{i.experiment}}</h1>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="container-fluid">
+                      {{i.answer}}
+                    </div>
+                  </div>
+              </div>
+          </div>
+        </div>
+      {% endfor %}
+    </tbody>
+  </table>
+
+
+</div>
+{% endif %}
+{% endblock container %}

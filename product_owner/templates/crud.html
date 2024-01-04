@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block title %}
+<title>Index</title>
+{% endblock %}
+{% block container %}
+<div class="container-fluid">
+
+  {% if request.user.is_superuser %}
+  <button class="btn btn-danger m-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop" aria-controls="staticBackdrop">
+    Add Experiment in Index
+  </button>
+  {% endif %}
+  <h3>Index Page</h3>
+  <table class="table table-striped-columns">
+    <thead>
+      <tr>
+        <th>Experiment No.</th>
+        <th>Experiment Title</th>
+        {% if request.user.is_superuser %}
+        <th>Remove</th>
+        {% endif %}
+      </tr>
+    </thead>
+    <tbody>
+      {% for i in index %}
+      <tr>
+          <td>{{i.exp}}</td>
+          <td>{{i.title}}</td>
+          {% if request.user.is_superuser %}
+          <td><a href="/product/index/{{i.id}}" class="btn btn-danger">Remove</a></td>
+          {% endif %}
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div class="offcanvas offcanvas-start" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="staticBackdropLabel">Add Questions</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <div>
+        <form method="post" action="/product/index">
+          {% csrf_token %}
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">Experiment No.</span>
+            <input type="number" class="form-control" aria-label="Username" aria-describedby="basic-addon1" name="exp">
+          </div>
+          <div class="input-group">
+            <span class="input-group-text">Experiment Title</span>
+            <textarea class="form-control" aria-label="With textarea" name="title"></textarea>
+          </div>
+          <br>
+          <input type="submit" class="btn btn-warning" value="Add Experiment Title">
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock container %}

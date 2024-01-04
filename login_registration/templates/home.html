@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+<title>Home</title>
+{% endblock %}
+
+{% block container %}
+<br><br>
+<div class="container-fluid">
+    <div id="carouselExample" class="carousel slide">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img height="400" src="{% static 'image/home.jpeg' %}" class="d-block w-100">
+        </div>
+      </div>
+    </div>
+    <br><br>
+    <p class="text-center fs-2 fw-bold text-wrap">
+        We have created simple and user-friendly Pharmacology Practical exam online platform for Diploma in Pharmacy students as per ER 2020.
+    </p>
+    <br><br>
+    <p class="fs-6 text-wrap">
+        Key features of Exam Platform:<br>
+        1.	Very simple and user-friendly platform.<br>
+        2.	Similar to previous MSBTE Exam CD.<br>
+        3.	Included all questions related to new syllabus.<br>
+        4.	Questions may contain images/ videos related to questions.<br>
+        5.	Provided space for writing answers, which was not available previously.<br>
+        6.	You can take printout of student exams from “print result” tab.<br>
+        7.	To take exam in time bound manner, timer is provided for 30 min. for each exam.<br>
+        8.	Exam Platform included three sessional and one Annual exam i.e. overall four exams.<br>
+        9.	Exam platform is paid version and charged on the basis of charges per student per year.
+
+    </p>
+    <br><br>
+
+    <div class="card mb-3">
+          <div class="row g-0">
+            <div class="col-2">
+              <img src="{% static 'image/img.png' %}" class="img-fluid rounded-start">
+            </div>
+            <div class="col-10">
+              <div class="card-body">
+                <p class="card-title fs-6 fw-bold text-wrap">Ms. AnuradhaSagarTajave (PhD, M.Pharm QAT)<br>
+                Principal,Vishal JunnarSevaMandal’s Institute of Pharmacy for Women, Ale.</p>
+              </div>
+            </div>
+          </div>
+          <div class="row g-0">
+            <div class="card-body">
+                <p class="card-text">
+                    Has sixteen years’ experience in Academics.
+                    Completed Diploma in Pharmacy from BVDU’s Institute of Pharmacy,
+                    Erandawane Pune, B. Pharmacy was completed in 2007 from Poona college of Pharmacy, Erandawane, Pune.
+                    M. Pharm in QAT was completed from VJSM’s Vishal Institute of Pharmaceutical Education and research, Ale.
+                    Life member of APTI, IPA.
+                    Delivered Guest lectures as subject expertise for Pharmacology & Toxicology,
+                    Carrier opportunities in Pharmacy, etc.
+                </p>
+            </div>
+          </div>
+    </div>
+
+    <div class="card mb-3">
+      <div class="row g-0">
+        <div class="col-2">
+          <img src="{% static 'image/img_1.png' %}" class="img-fluid rounded-start">
+        </div>
+        <div class="col-10">
+          <div class="card-body">
+            <p class="card-title fs-6 fw-bold text-wrap">
+                Mrs. Gunjal Ashwini Prasad (M.Pharm QAT) Lecturer,
+                Vishal Junnar Seva Mandal's Institute of pharmacy, Ale.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="row g-0">
+          <div class="card-body">
+              <p class="card-text">
+                  Has Seven years experience in Academics.
+                  Completed Diploma in Pharmacy from VJSM’s Institute of pharmacy for women, Ale,
+                  B.Pharmacy was completed in 2014 from Sharadchandra Pawar college of Pharmacy,
+                  Otur. and M. Pharm in QAT was completed form VJSM’s Institute of Pharmaceutical Education and research, Ale.
+                  Has attended various seminar , training, Conferences and faculty development  programs.
+              </p>
+          </div>
+      </div>
+    </div>
+
+</div>
+{% endblock %}

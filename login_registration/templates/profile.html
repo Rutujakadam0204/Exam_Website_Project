@@ -1,0 +1,18 @@
+{%extends 'base.html'%}
+{% block title %}
+<title>Profile</title>
+{% endblock %}
+{%block container%}
+<div class="center">
+    Name : {{request.user.first_name}} {{request.user.last_name}}
+    <br>
+    {% if request.user.groups.all.0.name == 'student' %}
+    Roll number : {{user_profile.roll_number}}
+    <br>
+    Start year : {{user_profile.start_year}}
+    <br>
+    End year : {{user_profile.end_year}}
+    {% endif %}
+    
+</div>
+{%endblock container%}

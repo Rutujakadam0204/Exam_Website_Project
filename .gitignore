@@ -1,0 +1,7 @@
+__pycache__/
+migrations/
+media/
+db.sqlite3
+.venv/
+staticfiles/
+*.pdf

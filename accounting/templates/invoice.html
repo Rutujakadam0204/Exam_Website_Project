@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block title %}
+<title>Invoices</title>
+{% endblock %}
+
+{% block container %}
+<br><br>
+{% if request.user.is_superuser %}
+<div class="container">
+    <table class="table table-striped-columns">
+        <thead>
+            <tr>
+                <th>Payment Date</th>
+                <th>College Name</th>
+                <th>No. of Students</th>
+                <th>Price</th>
+                <th>College Expiry of Login</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in invoice %}
+                <tr>
+                    <td>{{i.paid_on}}</td>
+                    <td>{{i.college.college_name}}</td>
+                    <td>{{i.student_limit}}</td>
+                    <td>{{i.price}}</td>
+                    <td>{{i.expiry}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endif %}
+{% endblock %}
